@@ -1,6 +1,6 @@
 // Load the built CJS entry the way a consumer would, and verify a real token.
 const assert = require("node:assert/strict");
-const { createVerifier, JWT_VERIFY_FAILED_CODE } = require("endorser-vc");
+const { createVerifier, JWT_VERIFY_FAILED_CODE } = require("@endorser/endorser-vc");
 const { jwts } = require("./vectors-real-passkey.json");
 
 createVerifier({ testOnlySkipPeerExpiry: true })

@@ -76,8 +76,9 @@ endorser-vc's `createDidPeerJwt`. The `buffer/` polyfill can go if nothing else 
 
 ## History
 
-- Unscoped package name `endorser-vc`, public on npm: a scope needs an npm organization, and
-  nothing in the code is private. *(2026-10-29)*
+- Package name `@endorser/endorser-vc`, public on npm under the `endorser` organization; nothing in
+  the code is private. *(2026-10-29)*
+  - Rejected: unscoped `endorser-vc`, chosen first to avoid creating an npm organization.
 - One entry point rather than verify/sign/browser subpaths: none of them pulls in a dependency
   the others don't, and the browser-only function touches browser globals only when called.
   *(2026-10-29)*

@@ -16,13 +16,13 @@ One build serves Node (20+) and browsers, as ESM or CommonJS. It needs no Buffer
 cryptography goes through WebCrypto (`globalThis.crypto.subtle`).
 
 ```sh
-npm install endorser-vc
+npm install @endorser/endorser-vc
 ```
 
 ## Verifying
 
 ```ts
-import { createVerifier, decodeAndVerifyJwt } from "endorser-vc";
+import { createVerifier, decodeAndVerifyJwt } from "@endorser/endorser-vc";
 
 // defaults: no audience, no test bypasses
 const { issuer, payload } = await decodeAndVerifyJwt(jwt);
@@ -89,7 +89,7 @@ one did:peer identity is accepted by every deployment, whatever site created the
 ## Signing
 
 ```ts
-import { createEndorserJwtForKey, createEthrJwt } from "endorser-vc";
+import { createEndorserJwtForKey, createEthrJwt } from "@endorser/endorser-vc";
 
 // an account as Time Safari stores it: a Veramo identity, or a passkey credential ID
 const jwt = await createEndorserJwtForKey(account, { vc: claim }, 60 /* expiresIn seconds */);
