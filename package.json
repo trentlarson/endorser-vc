@@ -1,0 +1,77 @@
+{
+  "name": "endorser-vc",
+  "version": "0.0.1",
+  "description": "Create and verify the did:ethr and did:peer (passkey) JWTs used by Endorser Search and Time Safari",
+  "author": "Trent Larson <trent@trentlarson.com>",
+  "license": "SQLite Blessing",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trentlarson/endorser-vc.git"
+  },
+  "homepage": "https://github.com/trentlarson/endorser-vc#readme",
+  "bugs": {
+    "url": "https://github.com/trentlarson/endorser-vc/issues"
+  },
+  "keywords": [
+    "did",
+    "jwt",
+    "verifiable-credentials",
+    "did:ethr",
+    "did:peer",
+    "passkey",
+    "webauthn"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "test:dist": "npm run build && node test/smoke-dist.mjs && node test/smoke-dist.cjs",
+    "prepublishOnly": "npm run typecheck && npm test && npm run test:dist"
+  },
+  "dependencies": {
+    "@peculiar/asn1-ecc": "^2.3.8",
+    "@peculiar/asn1-schema": "^2.3.8",
+    "cbor-x": "^1.5.9",
+    "did-jwt": "^7.4.7",
+    "did-resolver": "^4.1.0"
+  },
+  "devDependencies": {
+    "@noble/curves": "^2.4.0",
+    "@types/node": "^26.6.6",
+    "tsup": "^9.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}
